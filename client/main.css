@@ -1,0 +1,51 @@
+html,body,.App{
+  background: #d47677;
+
+}
+.data-form{
+  margin-top: 5%;
+  display: flex !important;
+}
+#data-text,#data-btn{    border-radius: 20px;
+  padding: 1%;
+  border: none;
+}
+#data-btn{
+  font-size:15px;
+  font-weight: bold;
+  color:white;
+  background: skyblue;
+}
+.list-check{
+  border:none;
+  zoom: 2;
+  margin: 1%;
+}
+.list-item{
+  font-family: monospace;
+  font-style: italic;
+  font-size: 18px;
+  color:whitesmoke;
+}
+.to-do-list{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height:500px;
+}
+.to-do-card{
+  padding: 3%;
+  border: 2px solid wheat;
+  box-shadow: 4px 2px 2px 2px wheat;
+}
+#to-do-title{
+  color: white;
+  font-size: 36px;
+  font-style:italic;
+  font-weight: bold;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.list-card{
+  margin-top:50px;
+}
