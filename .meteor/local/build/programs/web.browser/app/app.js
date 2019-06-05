@@ -81,6 +81,14 @@ module.link("meteor/ultimatejs:tracker-react", {
   }
 
 }, 5);
+var login;
+Tracker.autorun(() => {
+  if (Meteor.user() !== null) {
+    login = "Log-out";
+  } else {
+    login = "Log-in";
+  }
+});
 
 class List extends TrackerReact(Component) {
   constructor() {
@@ -99,6 +107,7 @@ class List extends TrackerReact(Component) {
       } else {
         Accounts.logout();
         Bert.alert("Logged out from the account", 'info', 'fixed-top');
+        this.props.history.push('/list');
       }
     };
 
@@ -125,7 +134,6 @@ class List extends TrackerReact(Component) {
   }
 
   render() {
-    console.log(this.getdata());
     var list = this.getdata().map(text => {
       return React.createElement("div", {
         key: text._id,
@@ -141,14 +149,6 @@ class List extends TrackerReact(Component) {
         className: "list-item"
       }, text.name));
     });
-    var login;
-
-    if (Meteor.user() !== null) {
-      login = "Log-out";
-    } else {
-      login = "Log-in";
-    }
-
     return React.createElement("div", {
       className: "to-do-list container"
     }, React.createElement("button", {
