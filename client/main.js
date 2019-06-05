@@ -7,6 +7,8 @@ import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
 import List from './components/list';
+import Signup from './components/signup.js';
+import Login from './components/login.js';
 import React, {Component} from 'react';
 import Profile from './components/profile';
 import ReactDOM from 'react-dom';
@@ -19,7 +21,9 @@ class App extends TrackerReact(Component){
              <div className="App">
              
               <Switch>
-      <Route exact path="/" component={List}/>
+              <Route exact path="/" component={Signup}/> 
+              <Route  path="/login" component={Login}/>           
+      <Route exact path="/list" component={List}/>
       <Route  path="/profile" component={Profile}/>
     </Switch>
     </div>

@@ -1,11 +1,25 @@
 import React, {Component} from 'react';
 import Profile from './profile';
+import {Accounts} from 'meteor/accounts-base';
+import {Meteor} from 'meteor/meteor';
 import {Resolutions} from '../../imports/api/resolutions';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
 class List extends TrackerReact(Component) {
     getdata=()=>{
         return Resolutions.find().fetch();
 
+          }
+          logout=()=>{
+              var log=document.getElementById("log-btn").innerText;
+              console.log(log);
+              if(log==="Log-in"){
+                this.props.history.push('/login');
+              }
+else{
+ 
+    Accounts.logout();
+    Bert.alert("Logged out from the account",'info','fixed-top');
+}
           }
          
     adddata=(event)=>{
@@ -29,10 +43,21 @@ class List extends TrackerReact(Component) {
     render(){
   console.log(this.getdata()); 
      var list=this.getdata().map(text=>{
-         return(<div key={text._id}  className="list-itembox" style={{display: "flex"}}><input className="list-check" type="checkbox"  onChange={(event)=>this.handlecheck(event,text._id)} /> <li className="list-item">{text.name}</li></div>)
+         return(<div key={text._id}  className="list-itembox" style={{display: "flex"}}>
+         <input className="list-check" type="checkbox"  onChange={(event)=>this.handlecheck(event,text._id)} />
+          <li className="list-item">{text.name}</li></div>)
      })
+var login;
+     if(Meteor.user()!==null){
+login="Log-out";
+     }
+     else{
+        login="Log-in";
+     }
+
             return(
                 <div className="to-do-list container">
+                <button id="log-btn" onClick={()=>{this.logout()}}>{login}</button>
                 <div className="row to-do-card">
                 <div className="col-md-12">
              <div id="to-do-title">My To-do List</div>
