@@ -91,11 +91,11 @@ Tracker.autorun(() => {
 });
 
 class List extends TrackerReact(Component) {
-  constructor() {
-    super(...arguments);
+  constructor(props) {
+    super(props);
 
     this.getdata = () => {
-      return Resolutions.find().fetch();
+      return Resolutions.find({}).fetch();
     };
 
     this.logout = () => {
@@ -107,7 +107,7 @@ class List extends TrackerReact(Component) {
       } else {
         Accounts.logout();
         Bert.alert("Logged out from the account", 'info', 'fixed-top');
-        this.props.history.push('/list');
+        this.props.history.push('/');
       }
     };
 
@@ -118,7 +118,7 @@ class List extends TrackerReact(Component) {
       if (text === "") {
         Bert.alert("fill up the field", 'danger', 'fixed-top');
       } else {
-        Meteor.call('addtext', text, (err, result) => {
+        Meteor.call('addtext', text, Meteor.userId(), (err, result) => {
           console.log(result);
         });
         document.getElementById("data-text").value = "";
@@ -131,10 +131,27 @@ class List extends TrackerReact(Component) {
         console.log(result);
       });
     };
+
+    this.state = {
+      resolutions: []
+    };
+  }
+
+  componentDidMount() {
+    this.listTracker = Tracker.autorun(() => {
+      Meteor.subscribe('resolutions');
+      this.setState({
+        resolutions: Resolutions.find().fetch()
+      });
+    });
   }
 
   render() {
-    var list = this.getdata().map(text => {
+    if (Meteor.user() === null) {
+      this.props.history.push('/login');
+    }
+
+    var list = this.state.resolutions.map(text => {
       return React.createElement("div", {
         key: text._id,
         className: "list-itembox",

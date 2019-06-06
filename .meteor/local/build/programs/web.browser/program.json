@@ -46,10 +46,10 @@
       "where": "client",
       "type": "js",
       "cacheable": true,
-      "url": "/packages/modules.js?hash=993fc0ac469a89cc8341b78ff2f44c3cb991532c",
-      "size": 1922856,
-      "hash": "993fc0ac469a89cc8341b78ff2f44c3cb991532c",
-      "sri": "umFEUn39N86J3jT5OyXUR6I+vq6EaMEBXu+UW+Ib7WIBMYKSG9MMksOyg7yaTbsazw1nwiOe0ngCEkxqjWr7ng=="
+      "url": "/packages/modules.js?hash=6ac375f2a55b0fce09afd34ad1aa52fe60f4ed44",
+      "size": 1922832,
+      "hash": "6ac375f2a55b0fce09afd34ad1aa52fe60f4ed44",
+      "sri": "+5puNAMLSmWCn+hSQIC+5vI3dOW4/C7s21pzxwGvVgYfA2j9RuQC4dANrKR8ypDDy3na5BR/42Dnq2ZGgM88bg=="
     },
     {
       "path": "packages/modern-browsers.js",
@@ -456,16 +456,6 @@
       "size": 674,
       "hash": "f13a25afcd4f557a0bbf67490f97e78c5d400e73",
       "sri": "WiU+dMIqRQv7QLz3zidYkz3JO9vUtaVZogoyu0sBVZ/VpYpE+YIoEdWK0TWPgMV2YkWc/wMWYpuHNbpneScBmg=="
-    },
-    {
-      "path": "packages/autopublish.js",
-      "where": "client",
-      "type": "js",
-      "cacheable": true,
-      "url": "/packages/autopublish.js?hash=0e84e18afe9ffb1b5d8791fb8116bf263f57fc6e",
-      "size": 673,
-      "hash": "0e84e18afe9ffb1b5d8791fb8116bf263f57fc6e",
-      "sri": "Q8MWixgfUns9DLblVlbjTW4C4NK3VjiF3dN9Yb18as1zfOUYjY9v1WHqBMZV2pXdN23NrByPAl+DR2mi4wZrfw=="
     },
     {
       "path": "packages/underscore.js",
@@ -960,12 +950,12 @@
       "where": "client",
       "type": "js",
       "cacheable": true,
-      "url": "/app/app.js?hash=43c2fbf5c7d7a5fe06e3554f7092468b80205da9",
+      "url": "/app/app.js?hash=dcc40d42f0e56236e5672eb92cc4167792cd9c18",
       "sourceMap": "app/app.js.map",
-      "sourceMapUrl": "/app/43c2fbf5c7d7a5fe06e3554f7092468b80205da9.map",
-      "size": 16988,
-      "hash": "43c2fbf5c7d7a5fe06e3554f7092468b80205da9",
-      "sri": "njOiD+nft7HtMabsM4HbMilZJmDDfskGUirp2AxbvbrGBhWyRwUWwl5rlRllfzCdh+TfOOMFKfvzPR4oLEGNfg=="
+      "sourceMapUrl": "/app/dcc40d42f0e56236e5672eb92cc4167792cd9c18.map",
+      "size": 17343,
+      "hash": "dcc40d42f0e56236e5672eb92cc4167792cd9c18",
+      "sri": "LahABAlMAlE0jm3zAR5Ei1YDBExFmo2Z/4Th0dFFr5Jhcl9CC9jd/2ddBBVnqrChYbA22N3Qgi5W5jdwR9Jv/w=="
     },
     {
       "path": "packages/service-configuration.js",

@@ -9,32 +9,32 @@ import TrackerReact from 'meteor/ultimatejs:tracker-react';
 import List from './components/list';
 import Signup from './components/signup.js';
 import Login from './components/login.js';
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Profile from './components/profile';
 import ReactDOM from 'react-dom';
 import { mount } from 'react-mounter';
 const browserHistory = createBrowserHistory();
-class App extends TrackerReact(Component){
-  
-    render(){
-            return(
-             <div className="App">
-             
-              <Switch>
-              <Route exact path="/" component={Signup}/> 
-              <Route  path="/login" component={Login}/>           
-      <Route exact path="/list" component={List}/>
-      <Route  path="/profile" component={Profile}/>
-    </Switch>
-    </div>
-            )
+class App extends TrackerReact(Component) {
+
+    render() {
+        return (
+            <div className="App">
+
+                <Switch>
+                    <Route exact path="/" component={Signup} />
+                    <Route path="/login" component={Login} />
+                    <Route exact path="/list" component={List} />
+                    <Route path="/profile" component={Profile} />
+                </Switch>
+            </div>
+        )
     }
 }
 
-if(Meteor.isClient){
-    Meteor.startup(function(){
+if (Meteor.isClient) {
+    Meteor.startup(function () {
         console.log("enter");
-       
-        ReactDOM.render( <Router history={browserHistory}><App /></Router>, document.getElementById('root'));
+
+        ReactDOM.render(<Router history={browserHistory}><App /></Router>, document.getElementById('root'));
     })
 }

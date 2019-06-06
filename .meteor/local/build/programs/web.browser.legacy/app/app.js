@@ -92,17 +92,13 @@ var List =
 function (_TrackerReact) {
   (0, _inheritsLoose2.default)(List, _TrackerReact);
 
-  function List() {
+  function List(props) {
     var _this;
 
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    _this = _TrackerReact.call.apply(_TrackerReact, [this].concat(args)) || this;
+    _this = _TrackerReact.call(this, props) || this;
 
     _this.getdata = function () {
-      return Resolutions.find().fetch();
+      return Resolutions.find({}).fetch();
     };
 
     _this.logout = function () {
@@ -115,7 +111,7 @@ function (_TrackerReact) {
         Accounts.logout();
         Bert.alert("Logged out from the account", 'info', 'fixed-top');
 
-        _this.props.history.push('/list');
+        _this.props.history.push('/');
       }
     };
 
@@ -126,7 +122,7 @@ function (_TrackerReact) {
       if (text === "") {
         Bert.alert("fill up the field", 'danger', 'fixed-top');
       } else {
-        Meteor.call('addtext', text, function (err, result) {
+        Meteor.call('addtext', text, Meteor.userId(), function (err, result) {
           console.log(result);
         });
         document.getElementById("data-text").value = "";
@@ -140,16 +136,39 @@ function (_TrackerReact) {
       });
     };
 
+    _this.state = {
+      resolutions: []
+    };
     return _this;
   }
 
   var _proto = List.prototype;
 
-  _proto.render = function () {
-    function render() {
+  _proto.componentDidMount = function () {
+    function componentDidMount() {
       var _this2 = this;
 
-      var list = this.getdata().map(function (text) {
+      this.listTracker = Tracker.autorun(function () {
+        Meteor.subscribe('resolutions');
+
+        _this2.setState({
+          resolutions: Resolutions.find().fetch()
+        });
+      });
+    }
+
+    return componentDidMount;
+  }();
+
+  _proto.render = function () {
+    function render() {
+      var _this3 = this;
+
+      if (Meteor.user() === null) {
+        this.props.history.push('/login');
+      }
+
+      var list = this.state.resolutions.map(function (text) {
         return React.createElement("div", {
           key: text._id,
           className: "list-itembox",
@@ -160,7 +179,7 @@ function (_TrackerReact) {
           className: "list-check",
           type: "checkbox",
           onChange: function (event) {
-            return _this2.handlecheck(event, text._id);
+            return _this3.handlecheck(event, text._id);
           }
         }), React.createElement("li", {
           className: "list-item"
@@ -171,7 +190,7 @@ function (_TrackerReact) {
       }, React.createElement("button", {
         id: "log-btn",
         onClick: function () {
-          _this2.logout();
+          _this3.logout();
         }
       }, login), React.createElement("div", {
         className: "row to-do-card"
@@ -194,7 +213,7 @@ function (_TrackerReact) {
         type: "submit",
         id: "data-btn",
         onClick: function (event) {
-          _this2.adddata(event);
+          _this3.adddata(event);
         }
       }, "ADD ")), React.createElement("ul", {
         style: {

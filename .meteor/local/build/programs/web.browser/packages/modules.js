@@ -146,7 +146,6 @@ install("reactive-var");
 install("standard-minifier-css");
 install("standard-minifier-js");
 install("shell-server");
-install("autopublish");
 install("underscore");
 install("jquery", "meteor/jquery/main.js");
 install("observe-sequence");
